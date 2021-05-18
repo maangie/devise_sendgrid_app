@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## System dependencies
 
-Things you may want to cover:
+- ruby 2.6.1 (https://www.ruby-lang.org/ja/news/2019/01/30/ruby-2-6-1-released/)
+- execjs (https://github.com/rails/execjs)
 
-* Ruby version
+# INSTALL
 
-* System dependencies
+```shell
+% git clone https://github.com/maangie/devise_sendgrid_app.git
+% cd devise_sendgrid_app
+% bin/bundle config set --local without production
+% bin/bundle
+% bin/rails db:migrate
+```
 
-* Configuration
+# TODO
 
-* Database creation
+```shell
+% bin/rails server
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+http://localhost:3000/users/sign_up でサインアップ
