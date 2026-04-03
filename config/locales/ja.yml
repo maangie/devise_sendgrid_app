@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      user: "アカウント"
+    attributes:
+      user:
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        current_password: "現在のパスワード"
+        remember_me: "ログイン状態を保持する"
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: "を入力してください。"
+      confirmation: "が一致しません。"
+      invalid: "の形式が正しくありません。"
+      not_saved:
+        one: "1件のエラーにより%{resource}を保存できませんでした。"
+        other: "%{count}件のエラーにより%{resource}を保存できませんでした。"
+      taken: "はすでに使用されています。"
+      too_short: "%{count}文字以上で入力してください。"

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>Devise SendGrid App</title>
+    <title>Devise SendGrid アプリ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,19 +23,19 @@
           <%= link_to root_path, class: "flex items-center gap-3" do %>
             <span class="flex h-11 w-11 items-center justify-center rounded-[1.25rem] bg-slate-950 text-sm font-black uppercase tracking-[0.24em] text-white shadow-lg shadow-lagoon/25">DS</span>
             <span>
-              <span class="block text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">Rails Auth</span>
-              <span class="block font-display text-xl leading-none text-slate-950">Devise SendGrid App</span>
+              <span class="block text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">Rails 認証</span>
+              <span class="block font-display text-xl leading-none text-slate-950">Devise SendGrid アプリ</span>
             </span>
           <% end %>
 
           <div class="flex flex-wrap items-center gap-3">
             <% if user_signed_in? %>
               <span class="rounded-full border border-slate-200/80 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-600"><%= current_user.email %></span>
-              <%= link_to "Edit account", edit_user_registration_path, class: app_secondary_button_classes %>
-              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: app_primary_button_classes, form_class: "inline-block" %>
+              <%= link_to "アカウント設定", edit_user_registration_path, class: app_secondary_button_classes %>
+              <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: app_primary_button_classes, form_class: "inline-block" %>
             <% else %>
-              <%= link_to "Log in", new_user_session_path, class: app_secondary_button_classes %>
-              <%= link_to "Sign up", new_user_registration_path, class: app_primary_button_classes %>
+              <%= link_to "ログイン", new_user_session_path, class: app_secondary_button_classes %>
+              <%= link_to "新規登録", new_user_registration_path, class: app_primary_button_classes %>
             <% end %>
           </div>
         </div>

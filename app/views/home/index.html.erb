@@ -2,67 +2,67 @@
   <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
     <div>
       <div class="flex flex-wrap gap-3">
-        <span class="rounded-full border border-butter/60 bg-butter/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-slate-900">Tailwind Refresh</span>
+        <span class="rounded-full border border-butter/60 bg-butter/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-slate-900">Tailwind リデザイン</span>
         <span class="rounded-full border border-lagoon/40 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-slate-700">Devise + Confirmable</span>
       </div>
 
       <h1 class="mt-6 max-w-3xl font-display text-5xl leading-[0.95] text-slate-950 sm:text-6xl lg:text-7xl">
-        Devise SendGrid App
+        Devise SendGrid アプリ
       </h1>
 
       <% if user_signed_in? %>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
-          Signed in as <span class="font-semibold text-slate-950"><%= current_user.email %></span>.
-          Your account dashboard now matches the brighter authentication flow.
+          <span class="font-semibold text-slate-950"><%= current_user.email %></span> としてログインしています。
+          アカウントの状態と主要な操作を、この日本語 UI からすぐに確認できます。
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <%= link_to "Edit account", edit_user_registration_path, class: app_primary_button_classes %>
-          <%= button_to "Log out", destroy_user_session_path, method: :delete, class: app_secondary_button_classes, form_class: "inline-block" %>
+          <%= link_to "アカウント設定", edit_user_registration_path, class: app_primary_button_classes %>
+          <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: app_secondary_button_classes, form_class: "inline-block" %>
         </div>
 
         <div class="mt-8 grid gap-4 sm:grid-cols-3">
           <div class="rounded-[1.75rem] border border-white/80 bg-white/80 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.45)] backdrop-blur">
-            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">Status</p>
-            <p class="mt-3 text-2xl font-semibold text-slate-950"><%= current_user.confirmed? ? "Confirmed" : "Pending" %></p>
-            <p class="mt-2 text-sm leading-6 text-slate-600">Devise confirmation state is surfaced directly in the UI.</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">ステータス</p>
+            <p class="mt-3 text-2xl font-semibold text-slate-950"><%= current_user.confirmed? ? "確認済み" : "未確認" %></p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">メール確認の状態をホーム画面からそのまま把握できます。</p>
           </div>
           <div class="rounded-[1.75rem] border border-white/80 bg-white/80 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.45)] backdrop-blur">
-            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">Mailer</p>
-            <p class="mt-3 text-2xl font-semibold text-slate-950">Ready</p>
-            <p class="mt-2 text-sm leading-6 text-slate-600">Development now falls back cleanly when SMTP credentials are missing.</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">メール機能</p>
+            <p class="mt-3 text-2xl font-semibold text-slate-950">準備完了</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">SMTP 認証情報がなくても、開発環境では安全に動作するようにしています。</p>
           </div>
           <div class="rounded-[1.75rem] border border-white/80 bg-white/80 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.45)] backdrop-blur">
-            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">Stack</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">技術スタック</p>
             <p class="mt-3 text-2xl font-semibold text-slate-950">Rails 8</p>
-            <p class="mt-2 text-sm leading-6 text-slate-600">Ruby 4, Tailwind, and Devise now sit on the same modern baseline.</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Ruby 4、Tailwind、Devise を同じモダンな基盤に揃えています。</p>
           </div>
         </div>
       <% else %>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-700">
-          A small authentication app turned into a brighter product surface, with Devise confirmations, password recovery, and a more deliberate visual system.
+          Devise のメール確認、パスワード再設定、アカウント管理を、日本語の分かりやすい導線と明るいビジュアルでまとめた認証サンプルです。
         </p>
 
         <div class="mt-8 flex flex-wrap gap-3">
-          <%= link_to "Create an account", new_user_registration_path, class: app_primary_button_classes %>
-          <%= link_to "Log in", new_user_session_path, class: app_secondary_button_classes %>
+          <%= link_to "アカウントを作成", new_user_registration_path, class: app_primary_button_classes %>
+          <%= link_to "ログイン", new_user_session_path, class: app_secondary_button_classes %>
         </div>
 
         <div class="mt-8 grid gap-4 sm:grid-cols-3">
           <div class="rounded-[1.75rem] border border-white/80 bg-white/80 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.45)] backdrop-blur">
-            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">Visual Tone</p>
-            <p class="mt-3 text-2xl font-semibold text-slate-950">Warm + Electric</p>
-            <p class="mt-2 text-sm leading-6 text-slate-600">A softer canvas with bright citrus and lagoon accents, not another generic dashboard.</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">デザイン</p>
+            <p class="mt-3 text-2xl font-semibold text-slate-950">明るく印象的</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">温かいベースカラーに鮮やかな差し色を重ね、ありきたりな管理画面感を外しています。</p>
           </div>
           <div class="rounded-[1.75rem] border border-white/80 bg-white/80 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.45)] backdrop-blur">
-            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">Auth Flow</p>
-            <p class="mt-3 text-2xl font-semibold text-slate-950">Complete</p>
-            <p class="mt-2 text-sm leading-6 text-slate-600">Sign up, confirm, reset, unlock, and return through a single cohesive experience.</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">認証フロー</p>
+            <p class="mt-3 text-2xl font-semibold text-slate-950">一通り対応</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">新規登録、確認、再設定、ロック解除までを一つの統一感ある体験でつなげています。</p>
           </div>
           <div class="rounded-[1.75rem] border border-white/80 bg-white/80 p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,0.45)] backdrop-blur">
-            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">Foundation</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.26em] text-slate-400">基盤</p>
             <p class="mt-3 text-2xl font-semibold text-slate-950">Tailwind</p>
-            <p class="mt-2 text-sm leading-6 text-slate-600">Rapid utility styling with a custom palette and expressive typography.</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">カスタムカラーと表情のあるタイポグラフィで、素早く画面を整えています。</p>
           </div>
         </div>
       <% end %>
@@ -72,11 +72,11 @@
       <div class="relative overflow-hidden rounded-[2rem] bg-slate-950 p-7 text-white shadow-[0_30px_80px_-35px_rgba(15,23,42,0.75)]">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,122,69,0.3),_transparent_35%),radial-gradient(circle_at_bottom_left,_rgba(28,202,216,0.28),_transparent_30%)]"></div>
         <div class="relative">
-          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-butter">Flow Snapshot</p>
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-butter">フロー概要</p>
           <ol class="mt-5 space-y-4 text-sm leading-7 text-slate-200">
-            <li><span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">1</span>Open a colorful sign-up screen with clear hierarchy.</li>
-            <li><span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">2</span>Create an account and trigger Devise confirmation mailers.</li>
-            <li><span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">3</span>Return to a dashboard that surfaces account state and actions.</li>
+            <li><span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">1</span>見通しの良い新規登録画面からアカウントを作成します。</li>
+            <li><span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">2</span>Devise の確認メールを通してアカウントを有効化します。</li>
+            <li><span class="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs font-semibold text-white">3</span>ホームに戻り、アカウント状態と操作をすぐ確認できます。</li>
           </ol>
         </div>
       </div>
@@ -84,15 +84,15 @@
       <div class="rounded-[2rem] border border-white/80 bg-white/85 p-7 shadow-[0_20px_60px_-35px_rgba(15,23,42,0.45)] backdrop-blur">
         <div class="flex items-center justify-between gap-4">
           <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">Design Notes</p>
-            <p class="mt-3 text-2xl font-semibold text-slate-950">Intentional, not boilerplate</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">デザインメモ</p>
+            <p class="mt-3 text-2xl font-semibold text-slate-950">定型ではなく、意図のある画面</p>
           </div>
           <div class="h-14 w-14 rounded-[1.5rem] bg-[linear-gradient(135deg,#ff7a45,#ffd166)] shadow-lg shadow-mango/30"></div>
         </div>
         <div class="mt-6 grid gap-3">
-          <div class="rounded-[1.5rem] bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-700">Custom palette with warm sand backgrounds and high-contrast slate framing.</div>
-          <div class="rounded-[1.5rem] bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-700">Fraunces headlines and Space Grotesk body copy for a less generic voice.</div>
-          <div class="rounded-[1.5rem] bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-700">Reusable auth shell so every Devise screen feels like part of one product.</div>
+          <div class="rounded-[1.5rem] bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-700">暖かいサンド色の背景に、締まったスレート色のフレームを組み合わせています。</div>
+          <div class="rounded-[1.5rem] bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-700">見出しと本文で書体を分け、少し表情のあるプロダクト感を出しています。</div>
+          <div class="rounded-[1.5rem] bg-slate-50 px-4 py-4 text-sm leading-6 text-slate-700">Devise の各画面を共通シェルで包み、全体の統一感を保っています。</div>
         </div>
       </div>
     </div>

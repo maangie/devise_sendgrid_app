@@ -5,14 +5,14 @@ class AuthenticationPagesTest < ActionDispatch::IntegrationTest
     get new_user_registration_url
 
     assert_response :success
-    assert_select 'h2', 'Sign up'
+    assert_select 'h2', '新規登録'
   end
 
   test 'log in page renders' do
     get new_user_session_url
 
     assert_response :success
-    assert_select 'h2', 'Log in'
+    assert_select 'h2', 'ログイン'
   end
 
   test 'sign up creates an unconfirmed user' do

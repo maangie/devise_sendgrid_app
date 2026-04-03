@@ -1,12 +1,12 @@
 <%= render "devise/shared/auth_shell",
-           eyebrow: "Confirmation",
-           title: "Resend confirmation instructions",
-           subtitle: "Lost the first email? Send a fresh confirmation link and keep the account activation moving.",
-           highlights: ["Devise confirmable", "Reusable activation flow", "Styled recovery experience"] do %>
+           eyebrow: "確認メール",
+           title: "確認メールを再送",
+           subtitle: "最初のメールを見失っても、新しい確認リンクを再送してアカウント有効化を進められます。",
+           highlights: ["Devise confirmable 対応", "再利用しやすい有効化フロー", "統一された回復画面"] do %>
   <div class="space-y-6">
     <div>
-      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-mango">Activate Account</p>
-      <p class="mt-3 text-sm leading-6 text-slate-600">Enter the email you used during sign-up and we'll generate a new confirmation email.</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-mango">アカウント有効化</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">登録時に使ったメールアドレスを入力すると、新しい確認メールを送信します。</p>
     </div>
 
     <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "space-y-5" }) do |f| %>
@@ -14,10 +14,10 @@
 
       <div>
         <%= f.label :email, class: "text-sm font-semibold text-slate-800" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: app_input_classes, placeholder: "you@example.com" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: app_input_classes, placeholder: "your@example.com" %>
       </div>
 
-      <%= f.submit "Resend confirmation instructions", class: "#{app_primary_button_classes} w-full" %>
+      <%= f.submit "確認メールを再送する", class: "#{app_primary_button_classes} w-full" %>
     <% end %>
 
     <%= render "devise/shared/links" %>

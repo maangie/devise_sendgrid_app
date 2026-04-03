@@ -1,6 +1,6 @@
 <% if resource.errors.any? %>
   <div id="error_explanation" class="rounded-[1.5rem] border border-mango/30 bg-mango/10 px-4 py-4 text-slate-900 shadow-sm">
-    <h3 class="text-sm font-semibold uppercase tracking-[0.24em] text-mango">Needs Attention</h3>
+    <h3 class="text-sm font-semibold uppercase tracking-[0.24em] text-mango">要確認</h3>
     <p class="mt-2 text-base font-semibold">
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
