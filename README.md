@@ -2,23 +2,30 @@
 
 ## System dependencies
 
-- ruby 2.6.1 (https://www.ruby-lang.org/ja/news/2019/01/30/ruby-2-6-1-released/)
-- execjs (https://github.com/rails/execjs)
+- Ruby 4.0.2
+- Rails 8.1.3
+- SQLite 3 for development and test
+- PostgreSQL for production
 
-# INSTALL
-
-```shell
-% git clone https://github.com/maangie/devise_sendgrid_app.git
-% cd devise_sendgrid_app
-% bin/bundle config set --local without production
-% bin/bundle
-% bin/rails db:migrate
-```
-
-# TODO
+## Install
 
 ```shell
-% bin/rails server
+bundle install
+bin/rails db:prepare
 ```
 
-http://localhost:3000/users/sign_up でサインアップ
+## Run
+
+```shell
+bin/rails server
+```
+
+Open `http://localhost:3000`.
+
+In development, if `GMAIL_USERNAME` and `GMAIL_PASSWORD` are set, confirmation mail is sent via Gmail SMTP. Otherwise mail delivery falls back to Rails' `:test` adapter so local sign-up still works.
+
+## Test
+
+```shell
+bin/rails test
+```
