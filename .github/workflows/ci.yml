@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BUNDLE_WITHOUT: production
+      RAILS_ENV: test
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version-file: .ruby-version
+          bundler-cache: true
+
+      - name: Prepare test database
+        run: bin/rails db:prepare
+
+      - name: Build Tailwind CSS
+        run: bin/rails tailwindcss:build
+
+      - name: Run test suite
+        run: bin/rails test
