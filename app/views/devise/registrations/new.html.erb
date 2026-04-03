@@ -1,29 +1,40 @@
-<h2>Sign up</h2>
+<%= render "devise/shared/auth_shell",
+           eyebrow: "Fresh Account",
+           title: "Sign up",
+           subtitle: "Create a vivid demo account, trigger the Devise confirmation flow, and step into the new Tailwind refresh.",
+           highlights: ["Tailwind-first layout", "Email confirmation flow", "Rails 8 and Ruby 4 ready"] do %>
+  <div class="space-y-6">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-mango">Create Profile</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Use any email address you can test with. A confirmation link is generated as part of the sign-up flow.</p>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "space-y-5" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div>
+        <%= f.label :email, class: "text-sm font-semibold text-slate-800" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: app_input_classes, placeholder: "you@example.com" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div>
+        <div class="flex items-center justify-between gap-3">
+          <%= f.label :password, class: "text-sm font-semibold text-slate-800" %>
+          <% if @minimum_password_length %>
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-400"><%= @minimum_password_length %>+ chars</span>
+          <% end %>
+        </div>
+        <%= f.password_field :password, autocomplete: "new-password", class: app_input_classes, placeholder: "Create a strong password" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div>
+        <%= f.label :password_confirmation, class: "text-sm font-semibold text-slate-800" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: app_input_classes, placeholder: "Repeat your password" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: "#{app_primary_button_classes} w-full" %>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

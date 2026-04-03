@@ -1,16 +1,25 @@
-<h2>Forgot your password?</h2>
+<%= render "devise/shared/auth_shell",
+           eyebrow: "Password Reset",
+           title: "Forgot your password?",
+           subtitle: "Request a reset link and keep the recovery flow as polished as the front page.",
+           highlights: ["Recovery email flow", "Tailwind-styled forms", "Minimal friction reset"] do %>
+  <div class="space-y-6">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-mango">Recover Access</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">We'll send reset instructions to the email address on your account.</p>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "space-y-5" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div>
+        <%= f.label :email, class: "text-sm font-semibold text-slate-800" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: app_input_classes, placeholder: "you@example.com" %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+      <%= f.submit "Send reset instructions", class: "#{app_primary_button_classes} w-full" %>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

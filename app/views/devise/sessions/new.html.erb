@@ -1,26 +1,35 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<%= render "devise/shared/auth_shell",
+           eyebrow: "Welcome Back",
+           title: "Log in",
+           subtitle: "Step into the refreshed interface and manage your Devise-backed account from a brighter, more confident dashboard.",
+           highlights: ["Faster sign-in flow", "Colorful landing screen", "Clear account controls"] do %>
+  <div class="space-y-6">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-mango">Access Account</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Use your confirmed email and continue into the redesigned home screen.</p>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-5" }) do |f| %>
+      <div>
+        <%= f.label :email, class: "text-sm font-semibold text-slate-800" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: app_input_classes, placeholder: "you@example.com" %>
+      </div>
+
+      <div>
+        <%= f.label :password, class: "text-sm font-semibold text-slate-800" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: app_input_classes, placeholder: "Enter your password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <label class="flex items-center gap-3 rounded-[1.25rem] border border-slate-200/80 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700">
+          <%= f.check_box :remember_me, class: "h-4 w-4 rounded border-slate-300 text-lagoon focus:ring-lagoon" %>
+          <span>Keep me signed in on this device</span>
+        </label>
+      <% end %>
+
+      <%= f.submit "Log in", class: "#{app_primary_button_classes} w-full" %>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

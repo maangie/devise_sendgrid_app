@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DeviseSendgridApp</title>
+    <title>Devise SendGrid App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <body class="min-h-screen bg-sand font-sans text-slate-900 antialiased">
+    <div class="relative isolate min-h-screen overflow-hidden">
+      <div class="pointer-events-none absolute inset-0">
+        <div class="absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_top_left,_rgba(255,122,69,0.34),_transparent_35%),radial-gradient(circle_at_top_right,_rgba(28,202,216,0.3),_transparent_28%),linear-gradient(180deg,#fff7ed_0%,#eef8ff_48%,#ffffff_100%)]"></div>
+        <div class="absolute -left-20 top-28 h-72 w-72 rounded-full bg-mango/20 blur-3xl"></div>
+        <div class="absolute bottom-16 right-[-4rem] h-80 w-80 rounded-full bg-lagoon/20 blur-3xl"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,23,42,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.05)_1px,transparent_1px)] bg-[size:120px_120px] opacity-25"></div>
+      </div>
+
+      <header class="relative z-10 px-6 pt-6">
+        <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 rounded-full border border-white/80 bg-white/70 px-5 py-3 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.55)] backdrop-blur-xl">
+          <%= link_to root_path, class: "flex items-center gap-3" do %>
+            <span class="flex h-11 w-11 items-center justify-center rounded-[1.25rem] bg-slate-950 text-sm font-black uppercase tracking-[0.24em] text-white shadow-lg shadow-lagoon/25">DS</span>
+            <span>
+              <span class="block text-xs font-semibold uppercase tracking-[0.28em] text-slate-400">Rails Auth</span>
+              <span class="block font-display text-xl leading-none text-slate-950">Devise SendGrid App</span>
+            </span>
+          <% end %>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <% if user_signed_in? %>
+              <span class="rounded-full border border-slate-200/80 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-slate-600"><%= current_user.email %></span>
+              <%= link_to "Edit account", edit_user_registration_path, class: app_secondary_button_classes %>
+              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: app_primary_button_classes, form_class: "inline-block" %>
+            <% else %>
+              <%= link_to "Log in", new_user_session_path, class: app_secondary_button_classes %>
+              <%= link_to "Sign up", new_user_registration_path, class: app_primary_button_classes %>
+            <% end %>
+          </div>
+        </div>
+      </header>
+
+      <main class="relative z-10 pb-16">
+        <div class="mx-auto max-w-6xl px-6 pt-6">
+          <% { notice: notice, alert: alert }.each do |type, message| %>
+            <% next if message.blank? %>
+            <div class="<%= flash_banner_classes(type) %>">
+              <%= message %>
+            </div>
+          <% end %>
+        </div>
+
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

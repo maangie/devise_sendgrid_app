@@ -1,43 +1,56 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= render "devise/shared/auth_shell",
+           eyebrow: "Control Panel",
+           title: "Edit account",
+           subtitle: "Refresh your identity, rotate your password, or manage confirmation state without losing the polished front-end flow.",
+           highlights: ["Update profile data", "Secure password changes", "One-click account controls"] do %>
+  <div class="space-y-6">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.28em] text-mango">Account Settings</p>
+      <p class="mt-3 text-sm leading-6 text-slate-600">Leave the password fields blank if you're only changing your email address.</p>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-5" }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div>
+        <%= f.label :email, class: "text-sm font-semibold text-slate-800" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: app_input_classes %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="rounded-[1.5rem] border border-butter/40 bg-butter/15 px-4 py-3 text-sm text-slate-800">
+          Waiting for confirmation from <strong><%= resource.unconfirmed_email %></strong>.
+        </div>
+      <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <div>
+        <div class="flex items-center justify-between gap-3">
+          <%= f.label :password, class: "text-sm font-semibold text-slate-800" %>
+          <% if @minimum_password_length %>
+            <span class="text-xs uppercase tracking-[0.2em] text-slate-400"><%= @minimum_password_length %>+ chars</span>
+          <% end %>
+        </div>
+        <p class="mt-1 text-xs uppercase tracking-[0.2em] text-slate-400">Leave blank to keep your current password</p>
+        <%= f.password_field :password, autocomplete: "new-password", class: app_input_classes, placeholder: "New password" %>
+      </div>
+
+      <div>
+        <%= f.label :password_confirmation, class: "text-sm font-semibold text-slate-800" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: app_input_classes, placeholder: "Repeat new password" %>
+      </div>
+
+      <div>
+        <%= f.label :current_password, class: "text-sm font-semibold text-slate-800" %>
+        <p class="mt-1 text-xs uppercase tracking-[0.2em] text-slate-400">Required to save changes</p>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: app_input_classes, placeholder: "Current password" %>
+      </div>
+
+      <%= f.submit "Update account", class: "#{app_primary_button_classes} w-full" %>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
+    <div class="flex flex-wrap items-center gap-3">
+      <%= link_to "Back home", root_path, class: app_secondary_button_classes %>
+      <%= button_to "Cancel my account", registration_path(resource_name), method: :delete, class: "inline-flex items-center justify-center rounded-full border border-mango/40 bg-mango/10 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-mango hover:text-white", form_class: "inline-block" %>
+    </div>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), method: :delete %></p>
-
-<%= link_to "Back", root_path %>

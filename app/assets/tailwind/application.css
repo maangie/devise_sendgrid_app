@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-display: "Fraunces", serif;
+  --color-sand: #fff8ef;
+  --color-mango: #ff7a45;
+  --color-lagoon: #1ccad8;
+  --color-butter: #ffd166;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-sand);
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-lagoon) 35%, white);
+    color: #0f172a;
+  }
+}
