@@ -2,7 +2,7 @@
 
 ## System dependencies
 
-- Ruby 4.0.2
+- Ruby 4.0.9
 - Rails 8.1.3
 - SQLite 3 for development and test
 - PostgreSQL for production
