@@ -17,7 +17,7 @@ Devise によるユーザー登録とメール確認を試すための Rails ア
 
 | 項目 | バージョン・内容 |
 |---|---|
-| Ruby | 4.0.9 |
+| Ruby | 4.0.10 |
 | Rails | 8.1 |
 | Devise | 5.0 |
 | CSS | Tailwind CSS（tailwindcss-rails） |
